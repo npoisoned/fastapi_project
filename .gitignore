@@ -4,3 +4,6 @@ __pycache__/
 .env
 .idea/
 .vscode/
+test.db
+.coverage
+.pytest_cache/
