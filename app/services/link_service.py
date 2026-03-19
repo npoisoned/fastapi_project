@@ -41,7 +41,13 @@ class LinkService:
     def _is_expired(self, link: Link) -> bool:
         if link.expires_at is None:
             return False
-        return datetime.now(timezone.utc) > link.expires_at
+
+        expires_at = link.expires_at
+
+        if expires_at.tzinfo is None:
+            expires_at = expires_at.replace(tzinfo=timezone.utc)
+
+        return datetime.now(timezone.utc) > expires_at
 
     def create_link(
         self,
