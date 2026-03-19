@@ -188,3 +188,34 @@ http://127.0.0.1:8000/health
 * создание ссылки и переход по ссылке доступны всем
 * изменение и удаление ссылки доступны только зарегистрированному пользователю
 * изменение и удаление доступны только владельцу ссылки
+
+
+
+## Тесты
+
+Покрытие тестами: 92%.
+
+Запуск всех тестов:
+
+```bash
+python -m pytest tests
+````
+
+Проверка покрытия:
+
+```bash
+python -m coverage run -m pytest tests
+python -m coverage report -m
+python -m coverage html
+```
+
+Текстовый отчёт покрытия сохранён в файле `coverage.txt`.
+HTML-отчёт покрытия сохранён в папке `htmlcov/`.
+
+Нагрузочное тестирование:
+
+```bash
+locust -f locustfile.py --headless -u 20 -r 2 -t 30s --host http://127.0.0.1:8000 --html locust-report.html
+```
+
+HTML-отчёт нагрузочного тестирования сохранён в файле `locust-report.html`.
